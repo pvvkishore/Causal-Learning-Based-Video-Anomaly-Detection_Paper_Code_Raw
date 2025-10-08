@@ -1,0 +1,45 @@
+# Model Configuration
+model:
+  input_channels: 3
+  latent_dim: 512
+  num_temporal_layers: 2
+  hidden_dims: [64, 128, 256, 512]
+
+# Training Configuration
+training:
+  batch_size: 8
+  num_epochs: 100
+  learning_rate: 0.0001
+  weight_decay: 0.00001
+  beta: 1.0  # Weight for KL divergence in VAE loss
+  gradient_clip: 1.0
+  save_freq: 5  # Save checkpoint every N epochs
+
+# Data Configuration
+data:
+  sequence_length: 16
+  frame_size: [256, 256]
+  num_workers: 4
+  stride: 1
+  dataset_name: "default"  # Options: ucf-crime, shanghaitech, avenue, default
+
+# Evaluation Configuration
+evaluation:
+  threshold: 0.5
+  metrics: ["auc_roc", "auc_pr", "f1_score", "precision", "recall"]
+
+# Paths
+paths:
+  data_dir: "data/"
+  annotation_file: "data/annotations.json"
+  output_dir: "experiments/default"
+  checkpoint_dir: "experiments/default/checkpoints"
+  log_dir: "experiments/default/logs"
+
+# Experiment Settings
+experiment:
+  name: "causal_vad_default"
+  seed: 42
+  use_tensorboard: true
+  use_wandb: false
+  wandb_project: "video-anomaly-detection"
