@@ -1,0 +1,45 @@
+# Model Configuration - High Performance
+model:
+  input_channels: 3
+  latent_dim: 1024  # Increased from 512
+  num_temporal_layers: 3  # Increased from 2
+  hidden_dims: [64, 128, 256, 512, 1024]  # Deeper architecture
+
+# Training Configuration
+training:
+  batch_size: 4  # Smaller due to larger model
+  num_epochs: 200  # More epochs for better convergence
+  learning_rate: 0.00005  # Lower learning rate
+  weight_decay: 0.0001
+  beta: 1.5  # Higher weight for KL divergence
+  gradient_clip: 0.5
+  save_freq: 5
+
+# Data Configuration
+data:
+  sequence_length: 32  # Longer sequences for better temporal modeling
+  frame_size: [256, 256]  # Higher resolution
+  num_workers: 8
+  stride: 1  # Use all frames
+  dataset_name: "default"
+
+# Evaluation Configuration
+evaluation:
+  threshold: 0.5
+  metrics: ["auc_roc", "auc_pr", "f1_score", "precision", "recall", "accuracy"]
+
+# Paths
+paths:
+  data_dir: "data/"
+  annotation_file: "data/annotations.json"
+  output_dir: "experiments/high_performance"
+  checkpoint_dir: "experiments/high_performance/checkpoints"
+  log_dir: "experiments/high_performance/logs"
+
+# Experiment Settings
+experiment:
+  name: "causal_vad_high_perf"
+  seed: 42
+  use_tensorboard: true
+  use_wandb: true
+  wandb_project: "video-anomaly-detection"

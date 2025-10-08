@@ -1,0 +1,35 @@
+# Core Dependencies
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-learn>=1.2.0
+
+# Video Processing
+opencv-python>=4.7.0
+av>=10.0.0
+decord>=0.6.0
+
+# Data Augmentation
+albumentations>=1.3.0
+imgaug>=0.4.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+tensorboard>=2.12.0
+wandb>=0.15.0
+
+# Utilities
+tqdm>=4.65.0
+pyyaml>=6.0
+pillow>=9.5.0
+h5py>=3.8.0
+
+# Causal Inference
+causalnex>=0.12.0
+dowhy>=0.9.0
+
+# Experiment Tracking
+hydra-core>=1.3.0
+omegaconf>=2.3.0

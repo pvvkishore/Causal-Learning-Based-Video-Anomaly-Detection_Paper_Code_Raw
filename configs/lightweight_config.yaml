@@ -1,0 +1,44 @@
+# Model Configuration - Lightweight for Quick Experiments
+model:
+  input_channels: 3
+  latent_dim: 256  # Reduced from 512
+  num_temporal_layers: 1  # Reduced from 2
+  hidden_dims: [32, 64, 128, 256]  # Smaller dimensions
+
+# Training Configuration
+training:
+  batch_size: 16  # Increased for faster training
+  num_epochs: 50  # Reduced for quick experiments
+  learning_rate: 0.0002
+  weight_decay: 0.00001
+  beta: 0.5  # Lower weight for KL divergence
+  gradient_clip: 1.0
+  save_freq: 10
+
+# Data Configuration
+data:
+  sequence_length: 8  # Shorter sequences
+  frame_size: [128, 128]  # Smaller frame size
+  num_workers: 4
+  stride: 2  # Skip more frames
+  dataset_name: "default"
+
+# Evaluation Configuration
+evaluation:
+  threshold: 0.5
+  metrics: ["auc_roc", "f1_score"]
+
+# Paths
+paths:
+  data_dir: "data/"
+  annotation_file: "data/annotations.json"
+  output_dir: "experiments/lightweight"
+  checkpoint_dir: "experiments/lightweight/checkpoints"
+  log_dir: "experiments/lightweight/logs"
+
+# Experiment Settings
+experiment:
+  name: "causal_vad_lightweight"
+  seed: 42
+  use_tensorboard: true
+  use_wandb: false
